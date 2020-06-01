@@ -9,8 +9,16 @@ modded class PlayerBase extends ManBase {
                     if (!ctx.Read (chatParams)) return;
                     string name = sender.GetName ();
                     string text = name + " : " + chatParams.param1;
-                    auto params = new Param1<string> (text);
-                    GetGame ().RPCSingleParam (this, ERPCs.RPC_USER_ACTION_MESSAGE, params, true);
+
+                    ref array<Man> players = new array<Man> ();
+                    GetGame ().GetPlayers (players);
+
+                    for (int i = 0; i < players.Count (); ++i) {
+                        if (players[i] && players[i].GetIdentity ()) {
+                            GetGame ().RPCSingleParam (players[i], ERPCs.RPC_USER_ACTION_MESSAGE, new Param1<string> (text), true, players[i].GetIdentity ());
+                        }
+                    }
+
                     break;
                 }
         }
