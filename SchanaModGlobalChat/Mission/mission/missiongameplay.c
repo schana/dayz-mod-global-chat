@@ -8,8 +8,10 @@ modded class MissionGameplay extends MissionBase {
             UAInput inp = GetUApi ().GetInputByName ("UASchanaChatChannel");
 
             if (inp && inp.LocalPress ()) {
-                m_SchanaChatChannelIsGlobal = !m_SchanaChatChannelIsGlobal;
-                GetGame ().Chat ("Channel switched to " + SchanaGetChatChannelName (), "colorAction");
+                if (!m_UIManager.IsMenuOpen (MENU_CHAT_INPUT)) {
+                    m_SchanaChatChannelIsGlobal = !m_SchanaChatChannelIsGlobal;
+                    GetGame ().Chat ("Channel switched to " + SchanaGetChatChannelName (), "colorAction");
+                }
             }
         }
     }
