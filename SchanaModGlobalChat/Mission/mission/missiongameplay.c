@@ -16,7 +16,7 @@ modded class MissionGameplay extends MissionBase {
             inp = GetUApi ().GetInputByName ("UASchanaChatSizeDown");
             if (inp && inp.LocalPress ()) {
                 if (!m_UIManager.IsMenuOpen (MENU_CHAT_INPUT)) {
-                    GetSchanaPartySettings ().SetSize (Math.Max (8, GetSchanaPartySettings ().GetSize () - 1));
+                    GetSchanaModGlobalChatSettings ().SetSize (Math.Max (8, GetSchanaModGlobalChatSettings ().GetSize () - 1));
                     m_Chat.SchanaUpdateSize ();
                 }
             }
@@ -24,7 +24,7 @@ modded class MissionGameplay extends MissionBase {
             inp = GetUApi ().GetInputByName ("UASchanaChatSizeUp");
             if (inp && inp.LocalPress ()) {
                 if (!m_UIManager.IsMenuOpen (MENU_CHAT_INPUT)) {
-                    GetSchanaPartySettings ().SetSize (Math.Min (25, GetSchanaPartySettings ().GetSize () + 1));
+                    GetSchanaModGlobalChatSettings ().SetSize (Math.Min (25, GetSchanaModGlobalChatSettings ().GetSize () + 1));
                     m_Chat.SchanaUpdateSize ();
                 }
             }

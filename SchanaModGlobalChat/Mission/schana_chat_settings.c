@@ -53,7 +53,7 @@ class SchanaModGlobalChatSettings {
 }
 
 static ref SchanaModGlobalChatSettings g_SchanaModGlobalChatSettings;
-static ref SchanaModGlobalChatSettings GetSchanaPartySettings () {
+static ref SchanaModGlobalChatSettings GetSchanaModGlobalChatSettings () {
     if (g_Game.IsClient () && !g_SchanaModGlobalChatSettings) {
         g_SchanaModGlobalChatSettings = SchanaModGlobalChatSettings.Get ();
         g_SchanaModGlobalChatSettings.Save ();

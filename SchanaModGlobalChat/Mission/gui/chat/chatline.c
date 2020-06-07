@@ -5,13 +5,13 @@ modded class ChatLine {
         m_NameWidget = TextWidget.Cast (m_RootWidget.FindAnyWidget ("ChatItemSenderWidget"));
         m_TextWidget = TextWidget.Cast (m_RootWidget.FindAnyWidget ("ChatItemTextWidget"));
 
-        m_NameWidget.SetTextExactSize (GetSchanaPartySettings ().GetSize ());
-        m_TextWidget.SetTextExactSize (GetSchanaPartySettings ().GetSize ());
+        m_NameWidget.SetTextExactSize (GetSchanaModGlobalChatSettings ().GetSize ());
+        m_TextWidget.SetTextExactSize (GetSchanaModGlobalChatSettings ().GetSize ());
     }
 
     void SchanaUpdateSize () {
-        m_NameWidget.SetTextExactSize (GetSchanaPartySettings ().GetSize ());
-        m_TextWidget.SetTextExactSize (GetSchanaPartySettings ().GetSize ());
+        m_NameWidget.SetTextExactSize (GetSchanaModGlobalChatSettings ().GetSize ());
+        m_TextWidget.SetTextExactSize (GetSchanaModGlobalChatSettings ().GetSize ());
     }
 
     override void Set (ChatMessageEventParams params) {
@@ -21,16 +21,16 @@ modded class ChatLine {
 
         if (channel & CCSystem) {
             if (params.param2 != "") {
-                SetColour (GetSchanaPartySettings ().GetColorServer ());
+                SetColour (GetSchanaModGlobalChatSettings ().GetColorServer ());
             } else {
-                SetColour (GetSchanaPartySettings ().GetColorGlobal ());
+                SetColour (GetSchanaModGlobalChatSettings ().GetColorGlobal ());
             }
         } else if (channel & CCAdmin) {
-            SetColour (GetSchanaPartySettings ().GetColorServer ());
+            SetColour (GetSchanaModGlobalChatSettings ().GetColorServer ());
         } else if (channel == 0 || channel & CCDirect) {
-            SetColour (GetSchanaPartySettings ().GetColorDirect ());
+            SetColour (GetSchanaModGlobalChatSettings ().GetColorDirect ());
         } else {
-            SetColour (GetSchanaPartySettings ().GetColorServer ());
+            SetColour (GetSchanaModGlobalChatSettings ().GetColorServer ());
         }
     }
 }
