@@ -6,4 +6,10 @@ modded class Chat {
         }
         super.Add (params);
     }
+
+    void SchanaUpdateSize () {
+        foreach (ChatLine line : m_Lines) {
+            line.SchanaUpdateSize ();
+        }
+    }
 }

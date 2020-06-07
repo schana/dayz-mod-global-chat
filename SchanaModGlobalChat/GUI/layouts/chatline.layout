@@ -21,7 +21,8 @@ WrapSpacerWidgetClass ChatItemWidget {
    vexactsize 0
    font "gui/fonts/sdf_MetronLight72"
    "shadow size" 10
-   "exact text" 0
+   "exact text" 1
+   "exact text size" 20
    "size to text h" 1
    "size to text v" 0
    "text valign" center
@@ -36,7 +37,8 @@ WrapSpacerWidgetClass ChatItemWidget {
    vexactsize 0
    font "gui/fonts/sdf_MetronLight72"
    "shadow size" 10
-   "exact text" 0
+   "exact text" 1
+   "exact text size" 20
    "size to text h" 1
    "size to text v" 0
    "text valign" center

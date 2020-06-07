@@ -3,11 +3,19 @@
     <inputs>
         <actions>
             <input name="UASchanaChatChannel" loc="Switch Chat Channel" />
+            <input name="UASchanaChatSizeDown" loc="Decrease Font Size" />
+            <input name="UASchanaChatSizeUp" loc="Increase Font Size" />
         </actions>
     </inputs>
     <preset>
         <input name="UASchanaChatChannel">
             <btn name="kZ" />
+        </input>
+        <input name="UASchanaChatSizeDown">
+            <btn name="kLBracket" />
+        </input>
+        <input name="UASchanaChatSizeUp">
+            <btn name="kRBracket" />
         </input>
     </preset>
 </modded_inputs>
