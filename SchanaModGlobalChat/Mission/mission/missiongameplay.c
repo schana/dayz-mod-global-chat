@@ -4,29 +4,23 @@ modded class MissionGameplay extends MissionBase {
     override void OnUpdate (float timeslice) {
         super.OnUpdate (timeslice);
 
-        if (GetUApi ()) {
+        if (GetUApi () && !m_UIManager.IsMenuOpen (MENU_CHAT_INPUT)) {
             UAInput inp = GetUApi ().GetInputByName ("UASchanaChatChannel");
             if (inp && inp.LocalPress ()) {
-                if (!m_UIManager.IsMenuOpen (MENU_CHAT_INPUT)) {
-                    m_SchanaChatChannelIsGlobal = !m_SchanaChatChannelIsGlobal;
-                    GetGame ().Chat ("Channel switched to " + SchanaGetChatChannelName (), "colorAction");
-                }
+                m_SchanaChatChannelIsGlobal = !m_SchanaChatChannelIsGlobal;
+                GetGame ().Chat ("Channel switched to " + SchanaGetChatChannelName (), "colorAction");
             }
 
             inp = GetUApi ().GetInputByName ("UASchanaChatSizeDown");
             if (inp && inp.LocalPress ()) {
-                if (!m_UIManager.IsMenuOpen (MENU_CHAT_INPUT)) {
-                    GetSchanaModGlobalChatSettings ().SetSize (Math.Max (8, GetSchanaModGlobalChatSettings ().GetSize () - 1));
-                    m_Chat.SchanaUpdateSize ();
-                }
+                GetSchanaModGlobalChatSettings ().SetSize (Math.Max (8, GetSchanaModGlobalChatSettings ().GetSize () - 1));
+                m_Chat.SchanaUpdateSize ();
             }
 
             inp = GetUApi ().GetInputByName ("UASchanaChatSizeUp");
             if (inp && inp.LocalPress ()) {
-                if (!m_UIManager.IsMenuOpen (MENU_CHAT_INPUT)) {
-                    GetSchanaModGlobalChatSettings ().SetSize (Math.Min (25, GetSchanaModGlobalChatSettings ().GetSize () + 1));
-                    m_Chat.SchanaUpdateSize ();
-                }
+                GetSchanaModGlobalChatSettings ().SetSize (Math.Min (25, GetSchanaModGlobalChatSettings ().GetSize () + 1));
+                m_Chat.SchanaUpdateSize ();
             }
         }
     }
