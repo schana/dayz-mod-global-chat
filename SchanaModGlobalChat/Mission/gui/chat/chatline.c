@@ -20,10 +20,10 @@ modded class ChatLine {
         int channel = params.param1;
 
         if (channel & CCSystem) {
-            if (params.param2 != "") {
-                SetColour (GetSchanaModGlobalChatSettings ().GetColorServer ());
-            } else {
+            if (params.param2 == "" && params.param3.IndexOf (" : ") > 0) {
                 SetColour (GetSchanaModGlobalChatSettings ().GetColorGlobal ());
+            } else {
+                SetColour (GetSchanaModGlobalChatSettings ().GetColorAlert ());
             }
         } else if (channel & CCAdmin) {
             SetColour (GetSchanaModGlobalChatSettings ().GetColorServer ());
