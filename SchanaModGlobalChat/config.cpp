@@ -2,9 +2,7 @@ class CfgPatches
 {
 	class SchanaModGlobalChat
 	{
-		requiredAddons[] = {};
-		units[] = {};
-		weapons[] = {};
+		requiredAddons[] = { "SchanaModGlobalChatDefine" };
 	};
 };
 
@@ -19,11 +17,19 @@ class CfgMods
 		inputs = "SchanaModGlobalChat/Data/Inputs.xml";
 		dependencies[] =
 		{
+			"Game",
 			"Mission",
 			"World"
 		};
 		class defs
 		{
+			class gameScriptModule
+			{
+				files[] =
+				{
+					"SchanaModGlobalChat/Game"
+				};
+			};
 			class missionScriptModule
 			{
 				files[] =
