@@ -1,5 +1,27 @@
 modded class MissionGameplay extends MissionBase {
     private bool m_SchanaChatChannelIsGlobal = true;
+	
+	
+	void MissionGameplay (){
+        GetRPCManager ().AddRPC ("SchanaChat", "SchanaChatSettingsRPC", this, SingleplayerExecutionType.Both);
+		}
+	
+	override void OnMissionStart (){
+		super.OnMissionStart ();
+		Print ("[SchanaChat] Requesting settings from server");
+		GetRPCManager ().SendRPC ("SchanaChat", "SchanaChatSettingsRPC", new Param1< SchanaModGlobalChatServerSettings >( NULL ), true, NULL);
+	}
+	
+	void SchanaChatSettingsRPC ( CallType type, ref ParamsReadContext ctx, ref PlayerIdentity sender, ref Object target ) {
+		Param1< SchanaModGlobalChatServerSettings > data  //Player ID, Icon
+		if ( !ctx.Read ( data ) ) return;
+		
+		Print ("[SchanaChat] Receiving settings from server");
+		
+		g_SchanaModGlobalChatServerSettings = data.param1;
+	}
+
+	
 
     override void OnUpdate (float timeslice) {
         super.OnUpdate (timeslice);
@@ -13,13 +35,13 @@ modded class MissionGameplay extends MissionBase {
 
             inp = GetUApi ().GetInputByName ("UASchanaChatSizeDown");
             if (inp && inp.LocalPress ()) {
-                GetSchanaModGlobalChatSettings ().SetSize (Math.Max (8, GetSchanaModGlobalChatSettings ().GetSize () - 1));
+                GetSchanaModGlobalChatSettings ().SetSize (Math.Max (12, GetSchanaModGlobalChatSettings ().GetSize () - 1));
                 m_Chat.SchanaUpdateSize ();
             }
 
             inp = GetUApi ().GetInputByName ("UASchanaChatSizeUp");
             if (inp && inp.LocalPress ()) {
-                GetSchanaModGlobalChatSettings ().SetSize (Math.Min (25, GetSchanaModGlobalChatSettings ().GetSize () + 1));
+                GetSchanaModGlobalChatSettings ().SetSize (Math.Min (30, GetSchanaModGlobalChatSettings ().GetSize () + 1));
                 m_Chat.SchanaUpdateSize ();
             }
         }
