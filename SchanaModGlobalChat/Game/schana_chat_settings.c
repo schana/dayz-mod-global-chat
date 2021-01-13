@@ -81,7 +81,31 @@ class SchanaModGlobalChatSettings {
             JsonFileLoader<SchanaModGlobalChatSettings>.JsonSaveFile (PATH, this);
         }
     }
-
+	
+	void Debug (){
+		
+		Print (" = = = = = = Debug = = = = = = = = = = = = ");
+	
+		Print ("[SchanaChat] ColorDirect");
+		Print (ColorDirect.Debug ());
+		Print ("[SchanaChat] ColorDirectPlayer");
+		Print (ColorDirectPlayer.Debug ());
+		Print ("[SchanaChat] ColorGlobal");
+		Print (ColorGlobal.Debug ());
+		Print ("[SchanaChat] ColorGlobalPlayer");
+		Print (ColorGlobalPlayer.Debug ());
+		Print ("[SchanaChat] ColorServer");
+		Print (ColorServer.Debug ());
+		Print ("[SchanaChat] ColorAlert");
+		Print (ColorAlert.Debug ());
+		
+		Print (" = = = = = = Server = = = = = = = = = = = = ");
+		GetSchanaModGlobalChatServerSettings ().Debug ();
+		
+		
+		Print (" = = = = = = End = = = = = = = = = = = = ");
+	}
+	
     static ref SchanaModGlobalChatSettings Get () {
         auto settings = new ref SchanaModGlobalChatSettings ();
 
